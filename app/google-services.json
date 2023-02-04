@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "128846013704",
+    "project_id": "wassali-feb71",
+    "storage_bucket": "wassali-feb71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128846013704:android:bd53da486d9c26e85578bd",
+        "android_client_info": {
+          "package_name": "com.example.wassali"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128846013704-894dqnb9ase86ntooksjdu36arh96o2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2a44zuuw2ggiU9Jg9uvUYrWInQDZtZ5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128846013704-894dqnb9ase86ntooksjdu36arh96o2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

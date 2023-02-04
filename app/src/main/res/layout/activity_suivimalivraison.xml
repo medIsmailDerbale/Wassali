@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DmLivClient.AfficherDemandeActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/akaya_telivigala"
+            android:text="Livraison"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_etat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:text="Etat de la livraison : En Route"
+            android:textSize="22sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de la livraison : 03/01/2023"
+            android:textSize="22sp"
+            android:textStyle="italic" />
+
+
+        <TextView
+            android:id="@+id/text_info_chemin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Information sur le chemin"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_point_depart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Point de départ : Paris"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_point_arrivee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Point d'arrivée : Marseille"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_date_depart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de départ : 03/01/2023"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_date_arrivee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date d'arrivée : 03/01/2023"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_info_benevole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Information sur le benevole"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom : Brahimi"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prenom : Zakaria"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_numero_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de téléphone : 0774089835"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_info_vehicule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Information sur le vehicule"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_marque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marque : Mercedes Benz"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type : A3"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_couleur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Couleur : Black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_info_colis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Information sur Mon colis"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description : Pc portable"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_poids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poids : 2 Kg"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_taille"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taille : 40*30cm"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Annuler la livraison"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.892"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_taille" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

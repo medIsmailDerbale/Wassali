@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DmLivBenevole.DemandelivraisonActivity">
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="56dp">
+
+                <TextView
+                    android:id="@+id/titre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/akaya_telivigala"
+                    android:text="Liste des demandes de livraison"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAlignment="center"/>
+
+            <TableRow>
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="Numero"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_500"/>
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="Nom client"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_500"/>
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="Colis"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_500" />
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="Action"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_500"/>
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="BRAHIMI" />
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="PC Portable" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:onClick="AfficherUneDemande"
+                    android:contentDescription="Voir plus de details"
+                    app:srcCompat="@drawable/baseline_visibility_24" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="2"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="DERBALE" />
+
+                <TextView
+                    android:background="@drawable/border"
+                    android:padding="10dip"
+                    android:text="Panier" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:onClick="AfficherUneDemande"
+                    android:contentDescription="Voir plus de details"
+                    app:srcCompat="@drawable/baseline_visibility_24" />
+            </TableRow>
+
+
+
+        </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

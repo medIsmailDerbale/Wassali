@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="A propos"></item>
+        <item
+            android:id="@+id/modifier"
+            android:icon="@drawable/baseline_person_24"
+            android:title="Modifier mes informations"></item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Client">
+            <menu>
+                <group>
+                    <item
+                        android:id="@+id/recherche"
+                        android:icon="@drawable/ic_baseline_search_24"
+                        android:title="Rechercher une livraison"></item>
+                    <item
+                        android:id="@+id/client_demande"
+                        android:icon="@drawable/baseline_checklist_24"
+                        android:title="Mes demandes de livraison"></item>
+                    <item
+                        android:id="@+id/client_livraison"
+                        android:icon="@drawable/baseline_local_shipping_24"
+                        android:title="Suivi mes livraisons"></item>
+                </group>
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Benevole">
+            <menu>
+                <group>
+                    <item
+                        android:id="@+id/declarer"
+                        android:icon="@drawable/baseline_add_circle_outline_24"
+                        android:title="Declarer un chemin"></item>
+                    <item
+                        android:id="@+id/benevole_chemin"
+                        android:icon="@drawable/baseline_location_on_24"
+                        android:title="Mes chemins"></item>
+                    <item
+                        android:id="@+id/benevole_demande"
+                        android:icon="@drawable/ic_baseline_list_24"
+                        android:title="Demandes de livraison"></item>
+                    <item
+                        android:id="@+id/benevole_livraison"
+                        android:icon="@drawable/ic_baseline_list_24"
+                        android:title="Mes Livraisons"></item>
+                </group>
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Authentification">
+            <menu>
+                <group>
+                    <item
+                        android:id="@+id/deconnecter"
+                        android:icon="@drawable/baseline_logout_24"
+                        android:title="Deconnecter"></item>
+                </group>
+            </menu>
+        </item>
+    </group>
+
+
+
+
+
+</menu>

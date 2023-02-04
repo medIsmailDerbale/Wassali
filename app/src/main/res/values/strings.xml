@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Wassali</string>
+    <string name="signuphere"><![CDATA[Vous n\'avez pas de compte ? S\'inscrire]]></string>
+    <string name="Connexion">Connexion</string>
+    <string name="login">Connexion</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="inscription">Inscription</string>
+    <string name="nomprenom">Nom et Prénom</string>
+    <string name="phone">Numéro de téléphone</string>
+    <string name="inscrir">S\'inscrire</string>
+    <string name="connecter">Vous avez déjà un compte? connexion</string>
+    <string name="birthdate">Date de naissance</string>
+    <string name="tag_line">Livrer votre colis gratuitement !</string>
+    <string name="open_menu">Open</string>
+    <string name="close_menu">Close</string>
+    <string name="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </string>
+    <string name="Forget">mot de pass oublié ?</string>
+</resources>
