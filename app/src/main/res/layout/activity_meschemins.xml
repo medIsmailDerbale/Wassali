@@ -83,7 +83,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:contentDescription="Voir plus de details"
-                app:srcCompat="@drawable/baseline_visibility_24" />
+                app:srcCompat="@drawable/baseline_visibility_24"
+                android:onClick="AfficherChemin"/>
         </TableRow>
 
         <TableRow>
