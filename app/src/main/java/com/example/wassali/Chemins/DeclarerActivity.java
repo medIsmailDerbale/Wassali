@@ -36,6 +36,7 @@ import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DeclarerActivity extends AppCompatActivity {
@@ -78,7 +79,8 @@ public class DeclarerActivity extends AppCompatActivity {
         buttonAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String adrDep, adrArr, dateDep, dateArr, heureDep, heureArr;
+                String userID,adrDep, adrArr, dateDep, dateArr, heureDep, heureArr;
+
                 double latitudeDep = 0, longitudeDep = 0,latitudeArr = 0, longitudeArr = 0;
                 adrDep = editTextAdrDep.getText().toString();
                 adrArr = editTextAdrArr.getText().toString();
@@ -109,9 +111,9 @@ public class DeclarerActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                    firebaseFirestore.collection("Chemin").document(FirebaseAuth.getInstance().getUid())
-                            .set(new Chemin(adrDep,latitudeDep ,longitudeDep , adrArr,latitudeArr,longitudeArr,  dateDep, dateArr, heureDep, heureArr));
+                    userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    // chemin.add(new Chemin(adrDep,latitudeDep ,longitudeDep , adrArr,latitudeArr,longitudeArr,  dateDep, dateArr, heureDep, heureArr));
+                    firebaseFirestore.collection("Chemin").add(new Chemin(userID,adrDep,latitudeDep ,longitudeDep , adrArr,latitudeArr,longitudeArr,  dateDep, dateArr, heureDep, heureArr));
                     Intent intent =new Intent(getApplicationContext(),MescheminsActivity.class);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Chemin ajouté", Toast.LENGTH_LONG).show();

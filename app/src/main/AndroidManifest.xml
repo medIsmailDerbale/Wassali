@@ -6,6 +6,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -89,6 +94,21 @@
         <activity android:label="@string/app_name"
             android:name=".DmLivBenevole.AfficherDemandeBenevole"
             android:parentActivityName=".DmLivBenevole.DemandelivraisonActivity"/>
+        <activity android:label="@string/app_name"
+            android:name=".Chemins.MesRecherchesActivity"
+            android:parentActivityName=".Chemins.RechercheActivity"/>
+        <activity android:label="@string/app_name"
+            android:name=".Chemins.AfficherRechercheActivity"
+            android:parentActivityName=".Chemins.MesRecherchesActivity"/>
+        <activity android:label="@string/app_name"
+            android:name=".DmLivClient.EtabliDemandeActivity"
+            android:parentActivityName=".Chemins.AfficherRechercheActivity"/>
+        <activity android:label="@string/app_name"
+            android:name=".Chemins.AfficherCheminActivity"
+            android:parentActivityName=".Chemins.MescheminsActivity"/>
+        <activity android:label="@string/app_name"
+            android:name=".LivBenevole.AfficherLivraisonBenActivity"
+            android:parentActivityName=".LivBenevole.MeslivraisonsActivity"/>
     </application>
 
 </manifest>

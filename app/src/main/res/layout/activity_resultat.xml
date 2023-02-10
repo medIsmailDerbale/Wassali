@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chemins.MesRecherchesActivity">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableau"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableau"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:stretchColumns="1"
+        app:layout_constraintTop_toBottomOf="@+id/map"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <TableRow>
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:text="Date"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:text="Depart"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:text="Arrivée"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:text="Action"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:id="@+id/departR"
+                android:text="01/01/2023"
+                android:textAlignment="center" />
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:id="@+id/arriveeR"
+                android:text="Paris" />
+
+            <TextView
+                android:background="@drawable/border"
+                android:padding="10dip"
+                android:text="Marseille" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:contentDescription="Voir plus de details"
+                android:onClick="Afficher"
+                app:srcCompat="@drawable/baseline_visibility_24" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

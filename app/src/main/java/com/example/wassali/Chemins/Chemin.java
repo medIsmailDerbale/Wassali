@@ -1,13 +1,14 @@
 package com.example.wassali.Chemins;
 
 public class Chemin {
-    public String adrDep , adrArr , dateDep , dateArr , heureDep , heureArr ;
+    public String userID,adrDep , adrArr , dateDep , dateArr , heureDep , heureArr ;
     public Double latitudeDep , longitudeDep , latitudeArr , longitudeArr ;
 
     public Chemin() {
     }
     // do enum
-    public Chemin(String adrDep,Double latitudeDep , Double longitudeDep, String adrArr,Double latitudeArr , Double longitudeArr, String dateDep, String dateArr, String heureDep, String heureArr) {
+    public Chemin(String userID,String adrDep,Double latitudeDep , Double longitudeDep, String adrArr,Double latitudeArr , Double longitudeArr, String dateDep, String dateArr, String heureDep, String heureArr) {
+        this.userID =userID;
         this.adrDep = adrDep;
         this.latitudeDep = latitudeDep;
         this.longitudeDep = longitudeDep;
@@ -19,4 +20,6 @@ public class Chemin {
         this.heureDep = heureDep;
         this.heureArr = heureArr;
     }
+
+
 }
