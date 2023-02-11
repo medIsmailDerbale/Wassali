@@ -121,7 +121,8 @@ public class MesRecherchesActivity extends AppCompatActivity {
     }
 
 
-    public void recherche(double latitudeDep, double latitudeArr, double longitudeDep, double longitudeArr){
+    public void recherche(double latitudeDep, double latitudeArr, double longitudeDep, double longitudeArr)
+    {
         Query query = db.collection("Chemin").whereEqualTo("latitudeDep",latitudeDep)
                 .whereEqualTo("latitudeArr",latitudeArr)
                 .whereEqualTo("longitudeDep",longitudeDep)
@@ -130,9 +131,39 @@ public class MesRecherchesActivity extends AppCompatActivity {
         query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
-                    System.out.println("latitude dep : " + documentSnapshot.getString("adrDep") + "arr " + documentSnapshot.getString("adrArr") +"date" +
-                            documentSnapshot.getString("dateDep"));
+                if (queryDocumentSnapshots.isEmpty()) {
+                    // Votre logique pour la requête alternative
+                    Query queryDep = db.collection("Chemin").whereEqualTo("latitudeDep", latitudeDep)
+                            .whereEqualTo("longitudeDep", longitudeDep);
+                    queryDep.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshotsDep) {
+                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshotsDep.getDocuments()){
+                                System.out.println("Depart : " + documentSnapshot.getString("adrDep") +
+                                        " - Arrivée : " + documentSnapshot.getString("adrArr") +" Date : " +
+                                        documentSnapshot.getString("dateDep"));
+                            }
+                        }
+                    });
+
+                    Query queryArr = db.collection("Chemin").whereEqualTo("latitudeArr", latitudeArr)
+                            .whereEqualTo("longitudeArr", longitudeArr);
+                    queryArr.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshotsArr) {
+                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshotsArr.getDocuments()){
+                                System.out.println("Depart : " + documentSnapshot.getString("adrDep") +
+                                        " - Arrivée : " + documentSnapshot.getString("adrArr") +" Date : " +
+                                        documentSnapshot.getString("dateDep"));
+                            }
+                        }
+                    });
+                } else {
+                    for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
+                        System.out.println("Depart : " + documentSnapshot.getString("adrDep") +
+                                " - Arrivée : " + documentSnapshot.getString("adrArr") +" Date : " +
+                                documentSnapshot.getString("dateDep"));
+                    }
                 }
             }
         });
@@ -176,5 +207,9 @@ public class MesRecherchesActivity extends AppCompatActivity {
         MesRecherchesActivity.this.startActivity(i);
 
     }
+
+
+
+
 
 }

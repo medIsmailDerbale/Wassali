@@ -40,6 +40,7 @@ public class CheminAdapter extends RecyclerView.Adapter<CheminAdapter.ViewHolder
 
             holder.mes_depart.setText(cheminModel.adrDep);
             holder.mes_arrivee.setText(cheminModel.adrArr);
+            holder.date.setText(cheminModel.dateDep);
 
 
     }
@@ -50,13 +51,14 @@ public class CheminAdapter extends RecyclerView.Adapter<CheminAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mes_depart,mes_arrivee;
+        TextView mes_depart,mes_arrivee,date;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
 
             mes_depart = itemView.findViewById(R.id.mes_depart);
             mes_arrivee = itemView.findViewById(R.id.mes_arrivee);
+            date = itemView.findViewById(R.id.date);
 
         }
     }

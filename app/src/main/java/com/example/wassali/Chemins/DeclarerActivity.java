@@ -70,10 +70,6 @@ public class DeclarerActivity extends AppCompatActivity {
 
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
 
-//        MapView mapView = (MapView) findViewById(R.id.map);
-//        mapView.setTileSource(TileSourceFactory.MAPNIK);
-//        mapView.setBuiltInZoomControls(true);
-//        mapView.setMultiTouchControls(true);
 
 
         buttonAjouter.setOnClickListener(new View.OnClickListener() {
