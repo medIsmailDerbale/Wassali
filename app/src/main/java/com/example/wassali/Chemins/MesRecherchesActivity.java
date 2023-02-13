@@ -1,6 +1,7 @@
 package com.example.wassali.Chemins;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -15,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wassali.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,10 +40,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MesRecherchesActivity extends AppCompatActivity {
+public class MesRecherchesActivity extends AppCompatActivity implements RecycleViewInterface{
 
     FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    RecyclerView recyclerView;
+    CheminAdapter cheminAdapter;
+    ProgressDialog progressDialog;
     TextView depart , arrivee ;
     ArrayList<CheminModel> cheminList;
 
@@ -51,9 +57,21 @@ public class MesRecherchesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resultat);
         db = FirebaseFirestore.getInstance();
         setTitle("Resultat de recherche");
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching data");
+        progressDialog.show();
+        recyclerView = findViewById(R.id.recycleView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        cheminList = new ArrayList<CheminModel>();
+        cheminAdapter = new CheminAdapter(this, MesRecherchesActivity.this , cheminList);
+        recyclerView.setAdapter(cheminAdapter);
 
-        depart = findViewById(R.id.departR);
-        arrivee = findViewById(R.id.arriveeR);
+
+
+//        depart = findViewById(R.id.departR);
+//        arrivee = findViewById(R.id.arriveeR);
 
         Intent intent = getIntent();
         String depart = intent.getStringExtra("adrDep");
@@ -122,18 +140,34 @@ public class MesRecherchesActivity extends AppCompatActivity {
 
 
     public void recherche(double latitudeDep, double latitudeArr, double longitudeDep, double longitudeArr){
-        Query query = db.collection("Chemin").whereEqualTo("latitudeDep",latitudeDep)
+        Query query = db.collection("Chemin").whereNotEqualTo("userID" , FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("latitudeDep",latitudeDep)
                 .whereEqualTo("latitudeArr",latitudeArr)
                 .whereEqualTo("longitudeDep",longitudeDep)
                 .whereEqualTo("longitudeArr",longitudeArr);
 
-        query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
-                    System.out.println("latitude dep : " + documentSnapshot.getString("adrDep") + "arr " + documentSnapshot.getString("adrArr") +"date" +
-                            documentSnapshot.getString("dateDep"));
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                if (error != null){
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
+                    Log.e("Firestore error",error.getMessage());
+                    return;
                 }
+
+                for (DocumentChange documentChange : value.getDocumentChanges()){
+
+                    cheminList.add(documentChange.getDocument().toObject(CheminModel.class));
+                }
+
+                cheminAdapter.notifyDataSetChanged();
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+
+
+
             }
         });
 
@@ -169,12 +203,13 @@ public class MesRecherchesActivity extends AppCompatActivity {
 
     }
 
-    public void Afficher(View v)
-    {
+    @Override
+    public void onItemClick(int position) {
         Intent i = new Intent(MesRecherchesActivity.this, com.example.wassali.Chemins.AfficherRechercheActivity.class);
         Log.d("testaff", "Afficher: ");
         MesRecherchesActivity.this.startActivity(i);
 
     }
+
 
 }
