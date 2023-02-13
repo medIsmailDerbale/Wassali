@@ -43,6 +43,7 @@ public class DeclarerActivity extends AppCompatActivity {
     EditText editTextAdrDep,editTextAdrArr , editTextDateDep , editTextDateArr
             , editTextHeureDep , editTextHeureArr ;
     Button buttonAjouter;
+
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
 
@@ -75,7 +76,7 @@ public class DeclarerActivity extends AppCompatActivity {
         buttonAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userID,adrDep, adrArr, dateDep, dateArr, heureDep, heureArr;
+                String userID , cheminID,adrDep, adrArr, dateDep, dateArr, heureDep, heureArr;
 
                 double latitudeDep = 0, longitudeDep = 0,latitudeArr = 0, longitudeArr = 0;
                 adrDep = editTextAdrDep.getText().toString();
@@ -107,9 +108,13 @@ public class DeclarerActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
+
                     userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    //cheminID = FirebaseFirestore.getInstance().
                     // chemin.add(new Chemin(adrDep,latitudeDep ,longitudeDep , adrArr,latitudeArr,longitudeArr,  dateDep, dateArr, heureDep, heureArr));
-                    firebaseFirestore.collection("Chemin").add(new Chemin(userID,adrDep,latitudeDep ,longitudeDep , adrArr,latitudeArr,longitudeArr,  dateDep, dateArr, heureDep, heureArr));
+                    firebaseFirestore.collection("Chemin").add(new Chemin(userID,firebaseFirestore.collection("Chemin").document().getId(),adrDep,latitudeDep ,longitudeDep , adrArr,latitudeArr,longitudeArr,  dateDep, dateArr, heureDep, heureArr));
+
                     Intent intent =new Intent(getApplicationContext(),MescheminsActivity.class);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Chemin ajouté", Toast.LENGTH_LONG).show();

@@ -98,8 +98,7 @@
             android:name=".Chemins.MesRecherchesActivity"
             android:parentActivityName=".Chemins.RechercheActivity"/>
         <activity android:label="@string/app_name"
-            android:name=".Chemins.AfficherRechercheActivity"
-            android:parentActivityName=".Chemins.MesRecherchesActivity"/>
+            android:name=".Chemins.AfficherRechercheActivity"></activity>
         <activity android:label="@string/app_name"
             android:name=".DmLivClient.EtabliDemandeActivity"
             android:parentActivityName=".Chemins.AfficherRechercheActivity"/>

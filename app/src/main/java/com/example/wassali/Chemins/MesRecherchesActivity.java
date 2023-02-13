@@ -1,6 +1,8 @@
 package com.example.wassali.Chemins;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -9,12 +11,16 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wassali.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,14 +43,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MesRecherchesActivity extends AppCompatActivity {
+public class MesRecherchesActivity extends AppCompatActivity implements RecycleViewInterface{
 
     FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    TextView depart , arrivee ;
     ArrayList<CheminModel> cheminList;
 
 
+    RecyclerView recyclerView;
+    CheminAdapter cheminAdapter;
+    ProgressDialog progressDialog;
+
+
+
+    //Button consulterbutton ;
+
+
+
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +70,19 @@ public class MesRecherchesActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         setTitle("Resultat de recherche");
 
-        depart = findViewById(R.id.departR);
-        arrivee = findViewById(R.id.arriveeR);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching data");
+        progressDialog.show();
+        recyclerView = findViewById(R.id.recycleView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        cheminList = new ArrayList<CheminModel>();
+        cheminAdapter = new CheminAdapter(this , MesRecherchesActivity.this , cheminList);
+        recyclerView.setAdapter(cheminAdapter);
+
+        //consulterbutton = findViewById(R.id.ButtonConsulter);
 
         Intent intent = getIntent();
         String depart = intent.getStringExtra("adrDep");
@@ -118,6 +147,15 @@ public class MesRecherchesActivity extends AppCompatActivity {
         recherche(latitudeDepart,latitudeArrivee,longitudeDepart,longitudeArrivee);
 
 
+      /*  consulterbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MesRecherchesActivity.this, AfficherCheminActivity.class);
+                Log.d("testaff", "Afficher: ");
+                MesRecherchesActivity.this.startActivity(i);
+            }
+        });*/
+
     }
 
 
@@ -127,78 +165,36 @@ public class MesRecherchesActivity extends AppCompatActivity {
                 .whereEqualTo("latitudeArr",latitudeArr)
                 .whereEqualTo("longitudeDep",longitudeDep)
                 .whereEqualTo("longitudeArr",longitudeArr);
+                //.whereNotEqualTo("userID" , FirebaseAuth.getInstance().getUid());
 
-        query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                if (queryDocumentSnapshots.isEmpty()) {
-                    // Votre logique pour la requête alternative
-                    Query queryDep = db.collection("Chemin").whereEqualTo("latitudeDep", latitudeDep)
-                            .whereEqualTo("longitudeDep", longitudeDep);
-                    queryDep.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshotsDep) {
-                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshotsDep.getDocuments()){
-                                System.out.println("Depart : " + documentSnapshot.getString("adrDep") +
-                                        " - Arrivée : " + documentSnapshot.getString("adrArr") +" Date : " +
-                                        documentSnapshot.getString("dateDep"));
-                            }
-                        }
-                    });
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        @Override
+        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                    Query queryArr = db.collection("Chemin").whereEqualTo("latitudeArr", latitudeArr)
-                            .whereEqualTo("longitudeArr", longitudeArr);
-                    queryArr.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshotsArr) {
-                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshotsArr.getDocuments()){
-                                System.out.println("Depart : " + documentSnapshot.getString("adrDep") +
-                                        " - Arrivée : " + documentSnapshot.getString("adrArr") +" Date : " +
-                                        documentSnapshot.getString("dateDep"));
-                            }
-                        }
-                    });
-                } else {
-                    for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()){
-                        System.out.println("Depart : " + documentSnapshot.getString("adrDep") +
-                                " - Arrivée : " + documentSnapshot.getString("adrArr") +" Date : " +
-                                documentSnapshot.getString("dateDep"));
-                    }
-                }
+            if (error != null){
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+                Log.e("Firestore error",error.getMessage());
+                return;
             }
-        });
+
+            for (DocumentChange documentChange : value.getDocumentChanges()){
+                System.out.println("adressse : " + documentChange.getDocument().getString("adrDep") );
+
+                cheminList.add(documentChange.getDocument().toObject(CheminModel.class));
+            }
+
+            cheminAdapter.notifyDataSetChanged();
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
+
+
+        }
+    });
 
     }
 
 
-    private static final int EARTH_RADIUS = 6371; // Radius of the earth in km
-
-    public void research(double startLat, double startLong, double endLat, double endLong) {
-        double dLat = Math.toRadians(endLat - startLat);
-        double dLng = Math.toRadians(endLong - startLong);
-
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(Math.toRadians(startLat)) * Math.cos(Math.toRadians(endLat)) *
-                        Math.sin(dLng / 2) * Math.sin(dLng / 2);
-
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double distance = EARTH_RADIUS * c * 1000; // Convert to meters
-
-        db.collection("Chemin").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot querySnapshot) {
-
-                for (DocumentSnapshot documentSnapshot : querySnapshot.getDocuments()){
-                    if (distance <= 5000) {
-                        depart.setText(documentSnapshot.getString("adrDep"));
-                        arrivee.setText(documentSnapshot.getString("adrArr"));
-                        System.out.println("depart: "+ documentSnapshot.getString("adrDep") +"    arrivee: "+documentSnapshot.getString("adrArr"));
-                    }
-                }
-            }
-        });
-
-    }
 
     public void Afficher(View v)
     {
@@ -209,7 +205,11 @@ public class MesRecherchesActivity extends AppCompatActivity {
     }
 
 
-
-
-
+    @Override
+    public void onItemClick(int position) {
+        Intent i = new Intent(MesRecherchesActivity.this, com.example.wassali.Chemins.AfficherRechercheActivity.class);
+        i.putExtra("ID" , cheminList.get(position).cheminID);
+        Log.d("testaff", "Afficher: ");
+        MesRecherchesActivity.this.startActivity(i);
+    }
 }

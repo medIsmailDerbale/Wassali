@@ -16,12 +16,16 @@ import java.util.List;
 
 public class CheminAdapter extends RecyclerView.Adapter<CheminAdapter.ViewHolder> {
 
+
+    private final RecycleViewInterface recycleViewInterface;
+
     Context context;
     ArrayList<CheminModel> cheminList;
 
-    public CheminAdapter(Context context, ArrayList<CheminModel> cheminList) {
+    public CheminAdapter( RecycleViewInterface recycleViewInterface , Context context, ArrayList<CheminModel> cheminList ) {
         this.context = context;
         this.cheminList = cheminList;
+        this.recycleViewInterface = recycleViewInterface;
     }
 
 
@@ -30,7 +34,7 @@ public class CheminAdapter extends RecyclerView.Adapter<CheminAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.items,parent,false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view , recycleViewInterface);
     }
 
     @Override
@@ -41,6 +45,7 @@ public class CheminAdapter extends RecyclerView.Adapter<CheminAdapter.ViewHolder
             holder.mes_depart.setText(cheminModel.adrDep);
             holder.mes_arrivee.setText(cheminModel.adrArr);
             holder.date.setText(cheminModel.dateDep);
+            holder.cheminid.setText(cheminModel.cheminID);
 
 
     }
@@ -51,14 +56,29 @@ public class CheminAdapter extends RecyclerView.Adapter<CheminAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mes_depart,mes_arrivee,date;
-        public ViewHolder(@NonNull View itemView) {
+        TextView mes_depart,mes_arrivee,date,cheminid;
+        public ViewHolder(@NonNull View itemView , RecycleViewInterface recycleViewInterface) {
             super(itemView);
 
 
             mes_depart = itemView.findViewById(R.id.mes_depart);
             mes_arrivee = itemView.findViewById(R.id.mes_arrivee);
             date = itemView.findViewById(R.id.date);
+            cheminid = itemView.findViewById(R.id.idchemin);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recycleViewInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION){
+                            recycleViewInterface.onItemClick(pos);
+                        }
+
+                    }
+                }
+            });
 
         }
     }

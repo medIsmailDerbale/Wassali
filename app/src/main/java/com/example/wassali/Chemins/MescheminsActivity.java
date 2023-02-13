@@ -1,6 +1,7 @@
 package com.example.wassali.Chemins;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MescheminsActivity extends AppCompatActivity {
+public class MescheminsActivity extends AppCompatActivity implements RecycleViewInterface {
 
     RecyclerView recyclerView;
     CheminAdapter cheminAdapter;
@@ -40,7 +41,7 @@ public class MescheminsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null ){
-            loadCheminDeclare();
+            //loadCheminDeclare();
         }
     }
 
@@ -50,8 +51,8 @@ public class MescheminsActivity extends AppCompatActivity {
             @Override
             public void onSuccess(QuerySnapshot querySnapshot) {
                 for (DocumentSnapshot documentSnapshot : querySnapshot.getDocuments()){
-//                    depart.setText(documentSnapshot.getString("adrDep"));
-//                    arrivee.setText(documentSnapshot.getString("adrArr"));
+                    String documentId = documentSnapshot.getId();
+                    System.out.println( "chemin ID"+documentId);
                     System.out.println("depart: "+ documentSnapshot.getString("adrDep") +"    arrivee: "+documentSnapshot.getString("adrArr"));
                 }
             }
@@ -71,7 +72,7 @@ public class MescheminsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cheminList = new ArrayList<CheminModel>();
-        cheminAdapter = new CheminAdapter(MescheminsActivity.this , cheminList);
+        cheminAdapter = new CheminAdapter(this ,MescheminsActivity.this , cheminList);
         recyclerView.setAdapter(cheminAdapter);
 
         mAuth = FirebaseAuth.getInstance();
@@ -97,7 +98,6 @@ public class MescheminsActivity extends AppCompatActivity {
                 }
 
                 for (DocumentChange documentChange : value.getDocumentChanges()){
-
                     cheminList.add(documentChange.getDocument().toObject(CheminModel.class));
                 }
 
@@ -111,5 +111,11 @@ public class MescheminsActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onItemClick(int position) {
+        Intent i = new Intent(MescheminsActivity.this, AfficherCheminActivity.class);
+        i.putExtra("ID" , cheminList.get(position).cheminID);
+        Log.d("testaff", "Afficher: ");
+        MescheminsActivity.this.startActivity(i);
+    }
 }
