@@ -65,7 +65,7 @@
             android:name=".CompteActivity"
             android:parentActivityName=".MainActivity"/>
         <activity android:label="@string/app_name"
-            android:name=".DmLivClient.MesdemandesActivity"
+            android:name=".Chemins.MesdemandesActivity"
             android:parentActivityName=".MainActivity"/>
         <activity android:label="@string/app_name"
             android:name=".LivClient.SuiviMesLivraisonActivity"
@@ -85,7 +85,7 @@
 
         <activity android:label="@string/app_name"
             android:name=".DmLivClient.AfficherDemandeActivity"
-            android:parentActivityName=".DmLivClient.MesdemandesActivity"/>
+            android:parentActivityName=".Chemins.MesdemandesActivity"/>
 
         <activity android:label="@string/app_name"
             android:name=".LivClient.AfficherLivraison"

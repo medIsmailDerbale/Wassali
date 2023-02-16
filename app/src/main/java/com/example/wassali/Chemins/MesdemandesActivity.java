@@ -4,19 +4,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.wassali.DmLivClient.AfficherDemandeActivity;
 import com.example.wassali.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -24,47 +22,23 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MescheminsActivity extends AppCompatActivity implements RecycleViewInterface {
+public class MesdemandesActivity extends AppCompatActivity implements RecycleViewInterface {
 
     RecyclerView recyclerView;
-    CheminAdapter cheminAdapter;
-    ArrayList<CheminModel> cheminList;
-    TextView  depart , arrivee ;
+    DemandeAdapter demandeAdapter;
+    ArrayList<DemandeModel> demandeList;
     ProgressDialog progressDialog;
-
 
     FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    Query ref = db.collection("Chemin").whereEqualTo("userID" , FirebaseAuth.getInstance().getUid()).orderBy("adrDep", Query.Direction.ASCENDING);
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mAuth.getCurrentUser() != null ){
-            //loadCheminDeclare();
-        }
-    }
-
-    private void loadCheminDeclare(){
-
-        db.collection("Chemin").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot querySnapshot) {
-                for (DocumentSnapshot documentSnapshot : querySnapshot.getDocuments()){
-                    String documentId = documentSnapshot.getId();
-                    System.out.println( "chemin ID"+documentId);
-                    System.out.println("depart: "+ documentSnapshot.getString("adrDep") +"    arrivee: "+documentSnapshot.getString("adrArr"));
-                }
-            }
-        });
-    }
+    Query ref = db.collection("Demande").whereEqualTo("userID" , FirebaseAuth.getInstance().getUid());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_recycle_view);
+        setTitle("Mes demandes de livraison");
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -73,16 +47,12 @@ public class MescheminsActivity extends AppCompatActivity implements RecycleView
         recyclerView = findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        cheminList = new ArrayList<CheminModel>();
-        cheminAdapter = new CheminAdapter(this ,MescheminsActivity.this , cheminList);
-        recyclerView.setAdapter(cheminAdapter);
+
+        demandeList = new ArrayList<DemandeModel>();
+        demandeAdapter = new DemandeAdapter(this , MesdemandesActivity.this , demandeList);
+        recyclerView.setAdapter(demandeAdapter);
 
         mAuth = FirebaseAuth.getInstance();
-        setTitle("Mes chemins");
-
-//        depart = findViewById(R.id.mes_depart);
-//        arrivee = findViewById(R.id.mes_arrivee);
-
         EventChangeListener();
     }
 
@@ -100,10 +70,10 @@ public class MescheminsActivity extends AppCompatActivity implements RecycleView
                 }
 
                 for (DocumentChange documentChange : value.getDocumentChanges()){
-                    cheminList.add(documentChange.getDocument().toObject(CheminModel.class));
+                    demandeList.add(documentChange.getDocument().toObject(DemandeModel.class));
                 }
 
-                cheminAdapter.notifyDataSetChanged();
+                demandeAdapter.notifyDataSetChanged();
                 if (progressDialog.isShowing())
                     progressDialog.dismiss();
 
@@ -113,11 +83,20 @@ public class MescheminsActivity extends AppCompatActivity implements RecycleView
     }
 
 
+
+    public void Afficher(View v)
+    {
+        Intent i = new Intent(MesdemandesActivity.this, com.example.wassali.DmLivClient.AfficherDemandeActivity.class);
+        Log.d("testaff", "Afficher: ");
+        MesdemandesActivity.this.startActivity(i);
+
+    }
+
     @Override
     public void onItemClick(int position) {
-        Intent i = new Intent(MescheminsActivity.this, AfficherCheminActivity.class);
-        i.putExtra("ID" , cheminList.get(position).cheminID);
+        Intent i = new Intent(MesdemandesActivity.this, AfficherDemandeActivity.class);
+        i.putExtra("ID" , demandeList.get(position).DemandeID);
         Log.d("testaff", "Afficher: ");
-        MescheminsActivity.this.startActivity(i);
+        MesdemandesActivity.this.startActivity(i);
     }
 }

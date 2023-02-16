@@ -62,7 +62,7 @@ public class EtabliDemandeActivity extends AppCompatActivity {
 
 
                 if (!poids.equals("") && !taille.equals("") && !desc.equals("")) {
-                    firebaseFirestore.collection("Demande").add(new Demande(poids,taille,desc,userid,cheminid));
+                    firebaseFirestore.collection("Demande").add(new Demande(firebaseFirestore.collection("Demande").document().getId(),poids,taille,desc,userid,cheminid));
                     Intent intent =new Intent(getApplicationContext(), AfficherRechercheActivity.class);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "demande ajoutée", Toast.LENGTH_LONG).show();
