@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DmLivBenevole.AfficherDemandeBenevole">
-
+    tools:context=".LivBenevole.AfficherLivraisonBenevole">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -22,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/akaya_telivigala"
-            android:text="Demande "
+            android:text="Livraison "
             android:textAlignment="center"
             android:textColor="@color/purple_500"
             android:textSize="30sp"
@@ -36,7 +35,7 @@
             android:id="@+id/text_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date de la demande : 01/01/2023"
+            android:text="Date de la demande : 23/02/2023"
             android:textSize="22sp"
             android:textStyle="italic" />
 
@@ -133,7 +132,7 @@
             android:id="@+id/buttonAccepter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Accepter la demande"
+            android:text="En route"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.892"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +142,7 @@
             android:id="@+id/buttonRefuser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Refuser la demande"
+            android:text="Livré"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.892"
             app:layout_constraintStart_toStartOf="parent"

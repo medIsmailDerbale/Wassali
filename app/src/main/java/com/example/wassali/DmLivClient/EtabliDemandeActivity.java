@@ -16,6 +16,7 @@ import com.example.wassali.Chemins.AfficherRechercheActivity;
 import com.example.wassali.Chemins.Chemin;
 import com.example.wassali.Chemins.Demande;
 import com.example.wassali.Chemins.MescheminsActivity;
+import com.example.wassali.Chemins.MesdemandesActivity;
 import com.example.wassali.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,7 +64,8 @@ public class EtabliDemandeActivity extends AppCompatActivity {
 
                 if (!poids.equals("") && !taille.equals("") && !desc.equals("")) {
                     firebaseFirestore.collection("Demande").add(new Demande(firebaseFirestore.collection("Demande").document().getId(),poids,taille,desc,userid,cheminid));
-                    Intent intent =new Intent(getApplicationContext(), AfficherRechercheActivity.class);
+                    Intent intent =new Intent(getApplicationContext(), MesdemandesActivity.class);
+                    intent.putExtra("ID", firebaseFirestore.collection("Demande").document().getId());
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "demande ajoutée", Toast.LENGTH_LONG).show();
                 }else {

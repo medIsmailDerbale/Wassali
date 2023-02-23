@@ -32,7 +32,8 @@ public class MesdemandesActivity extends AppCompatActivity implements RecycleVie
 
     FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    Query ref = db.collection("Demande").whereEqualTo("userID" , FirebaseAuth.getInstance().getUid());
+    Query ref = db.collection("Demande").whereEqualTo("userID" , FirebaseAuth.getInstance().getUid())
+            .whereEqualTo("etat" , "en attente");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,7 @@ public class MesdemandesActivity extends AppCompatActivity implements RecycleVie
     @Override
     public void onItemClick(int position) {
         Intent i = new Intent(MesdemandesActivity.this, AfficherDemandeActivity.class);
-        i.putExtra("ID" , demandeList.get(position).DemandeID);
+        i.putExtra("ID" , demandeList.get(position).demandeID);
         Log.d("testaff", "Afficher: ");
         MesdemandesActivity.this.startActivity(i);
     }

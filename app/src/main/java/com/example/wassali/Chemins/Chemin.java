@@ -22,5 +22,51 @@ public class Chemin {
         this.heureArr = heureArr;
     }
 
+    public String getUserID() {
+        return userID;
+    }
 
+    public String getAdrDep() {
+        return adrDep;
+    }
+
+    public String getAdrArr() {
+        return adrArr;
+    }
+
+    public String getDateDep() {
+        return dateDep;
+    }
+
+    public String getDateArr() {
+        return dateArr;
+    }
+
+    public String getHeureDep() {
+        return heureDep;
+    }
+
+    public String getHeureArr() {
+        return heureArr;
+    }
+
+    public String getCheminID() {
+        return cheminID;
+    }
+
+    public Double getLatitudeDep() {
+        return latitudeDep;
+    }
+
+    public Double getLongitudeDep() {
+        return longitudeDep;
+    }
+
+    public Double getLatitudeArr() {
+        return latitudeArr;
+    }
+
+    public Double getLongitudeArr() {
+        return longitudeArr;
+    }
 }

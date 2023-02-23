@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/akaya_telivigala"
-            android:text="Demande Numero 01"
+            android:text="Demande "
             android:textAlignment="center"
             android:textColor="@color/purple_500"
             android:textSize="30sp"
@@ -44,7 +44,7 @@
             android:id="@+id/text_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date de la demande : 01/01/2023"
+            android:text="Date de la demande : 23/02/2023"
             android:textSize="22sp"
             android:textStyle="italic" />
 
@@ -61,28 +61,28 @@
             android:id="@+id/text_point_depart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Point de départ : Paris"
+            android:text="Point de départ : "
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_point_arrivee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Point d'arrivée : Marseille"
+            android:text="Point d'arrivée : "
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_date_depart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date de départ : 03/01/2023"
+            android:text="Date de départ : "
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_date_arrivee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date d'arrivée : 03/01/2023"
+            android:text="Date d'arrivée : "
             android:textSize="20sp" />
 
         <TextView
@@ -97,51 +97,51 @@
             android:id="@+id/text_nom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nom : Brahimi"
+            android:text="Nom et prénom: "
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/text_prenom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prenom : Zakaria"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/text_prenom"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Prenom : Zakaria"-->
+<!--            android:textSize="20sp" />-->
 
         <TextView
             android:id="@+id/text_numero_tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Numéro de téléphone : 0774089835"
+            android:text="Numéro de téléphone : "
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/text_info_vehicule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Information sur le vehicule"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/text_info_vehicule"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Information sur le vehicule"-->
+<!--            android:textSize="24sp"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/text_marque"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Marque : Mercedes Benz"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/text_marque"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Marque : Mercedes Benz"-->
+<!--            android:textSize="20sp" />-->
 
-        <TextView
-            android:id="@+id/text_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type : A3"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/text_type"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Type : A3"-->
+<!--            android:textSize="20sp" />-->
 
-        <TextView
-            android:id="@+id/text_couleur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Couleur : Black"
-            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/text_couleur"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Couleur : Black"-->
+<!--            android:textSize="20sp" />-->
 
         <TextView
             android:id="@+id/text_info_colis"
@@ -155,21 +155,21 @@
             android:id="@+id/text_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description : Pc portable"
+            android:text="Description : Pc "
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_poids"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Poids : 2 Kg"
+            android:text="Poids : "
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_taille"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Taille : 40*30cm"
+            android:text="Taille : "
             android:textSize="20sp" />
 
         <Button

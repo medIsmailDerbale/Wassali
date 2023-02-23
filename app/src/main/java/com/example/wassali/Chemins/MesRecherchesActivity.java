@@ -161,7 +161,8 @@ public class MesRecherchesActivity extends AppCompatActivity implements RecycleV
 
     public void recherche(double latitudeDep, double latitudeArr, double longitudeDep, double longitudeArr)
     {
-        Query query = db.collection("Chemin").whereEqualTo("latitudeDep",latitudeDep)
+        Query query = db.collection("Chemin").whereNotEqualTo("userID" ,FirebaseAuth.getInstance().getUid() )
+        .whereEqualTo("latitudeDep",latitudeDep)
                 .whereEqualTo("latitudeArr",latitudeArr)
                 .whereEqualTo("longitudeDep",longitudeDep)
                 .whereEqualTo("longitudeArr",longitudeArr);

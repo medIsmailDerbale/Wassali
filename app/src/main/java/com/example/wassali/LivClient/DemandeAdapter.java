@@ -1,4 +1,4 @@
-package com.example.wassali.Chemins;
+package com.example.wassali.LivClient;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,42 +9,47 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.wassali.Chemins.RecycleViewInterface;
 import com.example.wassali.R;
 
 import java.util.ArrayList;
 
-public class DemandeAdapter extends RecyclerView.Adapter<DemandeAdapter.ViewHolder>{
+
+public class DemandeAdapter extends RecyclerView.Adapter<DemandeAdapter.ViewHolder> {
+
 
     private final RecycleViewInterface recycleViewInterface;
 
     Context context;
     ArrayList<DemandeModel> demandeList;
 
-    public DemandeAdapter( RecycleViewInterface recycleViewInterface , Context context, ArrayList<DemandeModel> demandeList ) {
+    public DemandeAdapter( RecycleViewInterface recycleViewInterface , Context context, ArrayList<DemandeModel> cheminList ) {
         this.context = context;
-        this.demandeList = demandeList;
+        this.demandeList = cheminList;
         this.recycleViewInterface = recycleViewInterface;
     }
 
+
     @NonNull
     @Override
-    public DemandeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.items_mesdemandes_client,parent,false);
 
-        return new DemandeAdapter.ViewHolder(view , recycleViewInterface);
+        return new ViewHolder(view , recycleViewInterface);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DemandeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        DemandeModel DemandeModel = demandeList.get(position);
+        DemandeModel demandeModel = demandeList.get(position);
 
-        holder.desc.setText(DemandeModel.desc);
-        holder.etat.setText(DemandeModel.etat);
-      //  holder.DemandeID.setText(DemandeModel.DemandeID);
+        holder.etat.setText(demandeModel.etat);
+        holder.desc.setText(demandeModel.desc);
+
+
+
 
     }
-
 
     @Override
     public int getItemCount() {
@@ -52,14 +57,14 @@ public class DemandeAdapter extends RecyclerView.Adapter<DemandeAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView desc ,etat , DemandeID ;
+        TextView desc,etat;
         public ViewHolder(@NonNull View itemView , RecycleViewInterface recycleViewInterface) {
             super(itemView);
 
-
-            desc = itemView.findViewById(R.id.desc);
             etat = itemView.findViewById(R.id.etat);
-           // DemandeID = itemView.findViewById(R.id.demandeid);
+            desc = itemView.findViewById(R.id.desc);
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,6 +82,4 @@ public class DemandeAdapter extends RecyclerView.Adapter<DemandeAdapter.ViewHold
 
         }
     }
-
-
 }

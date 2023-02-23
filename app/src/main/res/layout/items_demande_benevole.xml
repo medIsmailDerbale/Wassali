@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Etat: "
+                android:text="Etat :  "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -49,7 +49,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description : "
+                android:text="Nom client: "
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nomprenomc"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colis : "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -66,77 +89,56 @@
 
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="id demande : "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/demandeid"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                />
-        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:textAlignment="center">-->
-<!--            <Button-->
-<!--                android:id="@+id/Button1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="10dp"-->
-<!--                android:text="Annuler"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:padding="0dp"-->
-<!--                android:onClick="AfficherChemin"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/ButtonConsulter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:textSize="10dp"-->
-<!--                android:padding="0dp"-->
-<!--                android:text="Consulter"-->
-<!--                android:onClick="AfficherChemin"/>-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:textAlignment="center">-->
+        <!--            <Button-->
+        <!--                android:id="@+id/Button1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textSize="10dp"-->
+        <!--                android:text="Annuler"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:padding="0dp"-->
+        <!--                android:onClick="AfficherChemin"/>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/ButtonConsulter"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textSize="10dp"-->
+        <!--                android:padding="0dp"-->
+        <!--                android:text="Consulter"-->
+        <!--                android:onClick="AfficherChemin"/>-->
 
-<!--        </LinearLayout>-->
+        <!--        </LinearLayout>-->
     </LinearLayout>
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:orientation="horizontal">-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="date depart : "-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="26sp"-->
-<!--                android:textStyle="bold"/>-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center_vertical"-->
+    <!--            android:orientation="horizontal">-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="date depart : "-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="26sp"-->
+    <!--                android:textStyle="bold"/>-->
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:id="@+id/dateDep"-->
-<!--                android:text="paris"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="20sp"-->
-<!--                />-->
-<!--        </LinearLayout>-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:id="@+id/dateDep"-->
+    <!--                android:text="paris"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="20sp"-->
+    <!--                />-->
+    <!--        </LinearLayout>-->
 
 
 
